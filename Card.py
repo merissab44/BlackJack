@@ -5,6 +5,6 @@ class Card:
         self.suit = suit
         self.value = value
 
-    # This changes how we print out the card
-    def __repr__(self):
-        return " of ".join((self.value, self.suit))
+    # This changes how we print out the card string
+    def show(self):
+        print (f"{self.value} of {self.suit}")
