@@ -1,4 +1,4 @@
-#Welcome to BlackJack!!
+Welcome to BlackJack!!
 
 This program is a command line blackjack game where you are playing against the program(dealer).
 
