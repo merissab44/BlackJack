@@ -13,15 +13,5 @@ class Dealer(Player):
 
     # This will reveals the dealers hand
     def reveal(self):
-        for card in self.hand:
-            print(card)
-            return self.hand
         print("Dealer's total: ", self.calculate_hand())
-# if __name__ == "__main__":
-#     dealer = Dealer()
-#     dealer.add_card(dealer.hit())
-#     dealer.add_card(dealer.hit())
-#     dealer.add_card(dealer.hit())
-#     dealer.add_card(dealer.hit())
-#     dealer.reveal()
-    
+        return self.hand

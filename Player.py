@@ -14,6 +14,7 @@ class Player:
             if card.value.isnumeric():
                 self.score += int(card.value)
             elif card.value == "Ace":
+                has_ace == True
                 choice = input("Does this ace count as 1 or 11? ")
                 if choice == "1":
                     self.score += 1

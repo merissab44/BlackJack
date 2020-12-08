@@ -44,17 +44,14 @@ class Game:
                 # self.player.show_hand()
             elif choice == "stay" or choice == "s":
                 #If they stay get each score and compare them
-                self.player.get_hand()
-                self.dealer.get_hand()
-                #If player stays , then check if there's a blackjack
                 #If blackjack is True, this ends the game
-                player_blackjack, dealer_blackjack = self.check_blackjack()
-                if player_blackjack or dealer_blackjack:
-                    self.is_game_over(player_blackjack, dealer_blackjack)
-                    return player_blackjack, dealer_blackjack
-
-                print("Final Results")
-                print("Dealer's hand:", self.dealer.reveal())
+                if self.player.get_hand() > self.dealer.get_hand():
+                    print("Your hand was higher, you win!")
+                    print("Final Results")
+                    print("Dealer's hand:", self.dealer.reveal())
+                else:
+                    print("You busted. The dealer wins")
+                    return
 
     # Checks if player or dealer has reached 21
     # Checks if player or dealer has reached 21 or if the player has higher hand
@@ -96,4 +93,3 @@ if __name__ == "__main__":
         game = Game()
         player_blackjack, dealer_blackjack = game.game_running()
         game_over = game.is_game_over(player_blackjack, dealer_blackjack)
-    # game.check_blackjack()
