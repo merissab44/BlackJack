@@ -51,7 +51,8 @@ class Game:
                     print("Dealer's hand:", self.dealer.reveal())
                 else:
                     print("You busted. The dealer wins")
-                    return
+                    print("Final Results")
+                    print("Dealer's hand:", self.dealer.reveal())
 
     # Checks if player or dealer has reached 21
     # Checks if player or dealer has reached 21 or if the player has higher hand

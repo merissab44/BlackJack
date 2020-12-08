@@ -8,18 +8,15 @@ class Player:
     def calculate_hand(self):
         self.score = 0
         for card in self.hand:
-            has_ace = False
             #The .isnumeric returns a bool if the input is numeric or not
             # print(card)
             if card.value.isnumeric():
                 self.score += int(card.value)
             elif card.value == "Ace":
-                has_ace == True
-                choice = input("Does this ace count as 1 or 11? ")
-                if choice == "1":
-                    self.score += 1
-                elif choice == "11":
+                if self.score <= 10:
                     self.score += 11
+                elif self.score > 10:
+                    self.score += 1
             else:
                 self.score += 10
         return self.score
