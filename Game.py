@@ -59,9 +59,10 @@ class Game:
         player_blackjack = False
         dealer_blackjack = False
         players_hand = self.player.calculate_hand()
-        if players_hand == 21:
+        dealers_hand = self.dealer.calculate_hand()
+        if players_hand == 21 or dealers_hand > 21:
             player_blackjack = True
-        if self.dealer.calculate_hand() == 21 or players_hand > 21:
+        if dealers_hand == 21 or players_hand > 21:
             dealer_blackjack = True
         return player_blackjack, dealer_blackjack
 
@@ -75,9 +76,13 @@ class Game:
             print("Draw!")
         if player_has_blackjack:
             game_over = True
-            print("you win!")
+            print("dealer busted. you win!")
+            print(self.dealer.reveal())
+            print(self.player.show_hand())
         if dealer_has_blackjack:
             game_over = True
+            print(self.dealer.reveal())
+            print(self.player.show_hand())
             print("You busted. The dealer wins")
         if game_over == True:
             play_again = input("Would you like to play again? Y/N ").lower()
