@@ -15,14 +15,17 @@ class Player:
                 self.score += int(card.value)
             elif card.value == "Ace":
                 has_ace = True
-                choice = input("Does this ace count as 1 or 11? ")
-                val = choice
-                if choice == "1":
-                    self.score += 1
-                elif choice == "11":
-                    self.score += 11
+                if has_ace == True:
+                    choice = input("Does this ace count as 1 or 11? ")
+                    if choice == "1":
+                        self.score += 1
+                    elif choice == "11":
+                        self.score += 11
             else:
                 self.score += 10
+        return self.score
+
+    def get_hand(self):
         return self.score
     def add_card(self, card):
         # print(self.deal())
@@ -32,9 +35,8 @@ class Player:
         return self.hand
 
     def show_hand(self):
-        for card in self.hand:
-            print("Total: ", self.calculate_hand())
-            return self.hand
+        print("Total: ", self.calculate_hand())
+        return self.hand
 
 # if __name__ == "__main__":
 #     player = Player()

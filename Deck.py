@@ -23,11 +23,6 @@ class Deck(Card):
             # self.hand.append(self.cards.pop(0))
         return card
     
-        
-    #show the deck
-    def show(self):
-        for card in self.cards:
-            print(card)
 # if __name__ == "__main__":
 #     deck = Deck()
 #     # deck.build_deck()

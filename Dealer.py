@@ -10,15 +10,7 @@ class Dealer(Player):
 
     def hit(self):
         return self.deck.deal()
-        # print(self.deal())
-        # self.dealer_hand.append(self.deal())
-        # # print(self.player_hand)
-        # print(f"Your total is now: {self.get_value()}")
-        # return self.dealer_hand
-    
-    #Display the dealers cards
-    def display(self):
-        print("hidden")
+
     # This will reveals the dealers hand
     def reveal(self):
         for card in self.hand:
