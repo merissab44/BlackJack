@@ -11,24 +11,15 @@ class Deck:
         for suit in ["Spades", "Clubs", "Hearts", "Diamonds"]:
             for value in ["Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"]:
                 self.cards.append(Card(suit,value))
-        # print("Deck has been built")
-    #This randomizes the suits and values in the card 
+
+    #This randomizes the suits and values in the deck 
     def shuffle(self):
-        # we want to have at least 2 cards otherwise there's nothing to shuffle
+        # we only shuffle at teh beginning of 
+        # each round so we want to have 52 cards when we shuffle
         while len(self.cards) == 52:
             return random.shuffle(self.cards)
-    
+    #This returns the top card of the deck and removes it from the deck list
     def deal(self):
         card = self.cards.pop(0)
         return card
     
-# if __name__ == "__main__":
-#     deck = Deck()
-#     # deck.build_deck()
-#     # deck.shuffle()
-#     deck.deal()
-#     # print(f"Your hand is: ")
-#     # deck.show()
-#     print("----------------")
-#     deck.deal()
-#     deck.show()

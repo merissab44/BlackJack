@@ -34,6 +34,7 @@ class Game:
                 choice = input("Please enter 'hit' or 'stay' (or H/S) ").lower()
             # If they hit, add card to their hand and update the score
             if choice == "hit" or choice == "h":
+                #Deal a card to both player and dealer
                 self.player.add_card(deck.deal())
                 self.dealer.add_card(deck.deal())
                 #This checks if dealer or player has blackjack
@@ -41,20 +42,18 @@ class Game:
                 #If blackjack is True, this ends the game
                 if player_blackjack or dealer_blackjack:
                     return player_blackjack, dealer_blackjack
-                # self.player.show_hand()
             elif choice == "stay" or choice == "s":
-                #If they stay get each score and compare them
-                #If blackjack is True, this ends the game
+                #If player has higher score, player wins
                 if self.player.get_hand() > self.dealer.get_hand():
                     print("Your hand was higher, you win!")
                     print("Final Results")
                     print("Dealer's hand:", self.dealer.reveal())
                 else:
+                     #If dealer has higher score, dealer wins, and reveals their cards
                     print("You busted. The dealer wins")
                     print("Final Results")
                     print("Dealer's hand:", self.dealer.reveal())
 
-    # Checks if player or dealer has reached 21
     # Checks if player or dealer has reached 21 or if the player has higher hand
     def check_blackjack(self):
         player_blackjack = False
@@ -66,7 +65,7 @@ class Game:
             dealer_blackjack = True
         return player_blackjack, dealer_blackjack
 
-    # When game is overm ask to play 
+    # When game is over ask to play 
     # This method returns true or false if the player wants to play again
     def is_game_over(self, player_has_blackjack, dealer_has_blackjack):
         game_over = False
