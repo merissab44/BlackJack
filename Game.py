@@ -14,6 +14,7 @@ class Game:
         self.deck = Deck()
         self.deck.build_deck()
         self.deck.shuffle()
+
     #This runs the game
     def game_running(self):
         in_play = True
@@ -23,7 +24,6 @@ class Game:
             while len(self.player.hand) < 1 and len(self.player.hand) < 1:
                 player_first_card = deck.deal()
                 self.player.add_card(player_first_card) 
-
                 dealer_first_card = deck.deal()
                 self.dealer.add_card(dealer_first_card) 
             # Show the hand and ask player to hit or stay
@@ -35,6 +35,7 @@ class Game:
             # If they hit, add card to their hand and update the score
             if choice == "hit" or choice == "h":
                 self.player.add_card(deck.deal())
+                self.dealer.add_card(deck.deal())
                 #This checks if dealer or player has blackjack
                 player_blackjack, dealer_blackjack = self.check_blackjack()
                 #If blackjack is True, this ends the game
@@ -42,12 +43,20 @@ class Game:
                     return player_blackjack, dealer_blackjack
                 # self.player.show_hand()
             elif choice == "stay" or choice == "s":
+                #If they stay get each score and compare them
+                self.player.get_hand()
+                self.dealer.get_hand()
                 #If player stays , then check if there's a blackjack
                 #If blackjack is True, this ends the game
                 player_blackjack, dealer_blackjack = self.check_blackjack()
                 if player_blackjack or dealer_blackjack:
+                    self.is_game_over(player_blackjack, dealer_blackjack)
                     return player_blackjack, dealer_blackjack
 
+                print("Final Results")
+                print("Dealer's hand:", self.dealer.reveal())
+
+    # Checks if player or dealer has reached 21
     # Checks if player or dealer has reached 21 or if the player has higher hand
     def check_blackjack(self):
         player_blackjack = False
@@ -59,6 +68,7 @@ class Game:
             dealer_blackjack = True
         return player_blackjack, dealer_blackjack
 
+    # When game is overm ask to play 
     # This method returns true or false if the player wants to play again
     def is_game_over(self, player_has_blackjack, dealer_has_blackjack):
         game_over = False

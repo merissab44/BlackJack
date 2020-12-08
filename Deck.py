@@ -19,8 +19,7 @@ class Deck(Card):
             return random.shuffle(self.cards)
     
     def deal(self):
-        card = self.cards.pop()
-            # self.hand.append(self.cards.pop(0))
+        card = self.cards.pop(0)
         return card
     
 # if __name__ == "__main__":

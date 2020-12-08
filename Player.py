@@ -14,13 +14,11 @@ class Player:
             if card.value.isnumeric():
                 self.score += int(card.value)
             elif card.value == "Ace":
-                has_ace = True
-                if has_ace == True:
-                    choice = input("Does this ace count as 1 or 11? ")
-                    if choice == "1":
-                        self.score += 1
-                    elif choice == "11":
-                        self.score += 11
+                choice = input("Does this ace count as 1 or 11? ")
+                if choice == "1":
+                    self.score += 1
+                elif choice == "11":
+                    self.score += 11
             else:
                 self.score += 10
         return self.score
@@ -31,11 +29,11 @@ class Player:
         # print(self.deal())
         self.hand.append(card)
         if self.dealer:
-            print(f"Dealer's card: {self.hand}")
+            print(f"Dealer's cards are hidden")
         return self.hand
 
     def show_hand(self):
-        print("Total: ", self.calculate_hand())
+        print("Your total: ", self.calculate_hand())
         return self.hand
 
 # if __name__ == "__main__":
